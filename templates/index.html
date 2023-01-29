@@ -1,0 +1,30 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Black and White Image Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Black and White Image Converter</h1>
+    </header>
+    <section>
+        <p>Welcome to the Black and White Image Converter website! We're here to help you easily convert your images to black and white.</p>
+        <p>All you have to do is upload an image, and we'll take care of the rest. The processed image will be displayed on the site for you to download.</p>
+    </section>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" class="form-control" name="file">
+        <input type="submit" class="form-control btn btn-primary" value="Upload Image">
+    </form>
+</div>
+
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
