@@ -1,30 +1,85 @@
-<!-- home.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Black and White Image Converter</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+{% extends 'base.html'%}
 
-</head>
-<body>
-<div class="container">
-    <header>
-        <h1>Black and White Image Converter</h1>
-    </header>
-    <section>
-        <p>Welcome to the Black and White Image Converter website! We're here to help you easily convert your images to black and white.</p>
-        <p>All you have to do is upload an image, and we'll take care of the rest. The processed image will be displayed on the site for you to download.</p>
-    </section>
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" class="form-control" name="file">
-        <input type="submit" class="form-control btn btn-primary" value="Upload Image">
-    </form>
+{% block body %}
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-3">
+        <div class="row align-items-center g-lg-5 py-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">
+                <img src="/static/upload.svg" alt="" width="50" height="50">
+                 Copy-paste and let us do the job!
+            </h1>
+            <p class="col-lg-10 fs-4">It is totally free, without any image compression or degradation.</p>
+          </div>
+          <div class="col-md-10 mx-auto col-lg-5">
+            <form method="POST" enctype="multipart/form-data" class="p-4 p-md-3 border rounded-3 bg-light">
+                <div id="dropdown" class="dropdown container border border-5 border-primary rounded content" style="width:100%; height:200px; border-style: dotted !important">
+                    <img src="/static/upload.svg" id="imagePreview" class="hover-zoom rounded mx-auto d-block align-middle" style="max-height: 90%; max-width: 90%;"></img>
+                </div>
+                <input type="file" id="inputFile" class="form-control d-none" name="file">
+                <div class="form-floating mt-3">
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{error}}
+                      </div>
+                    {% endif %}
+                <input type="submit"  id="upload" class="w-100 btn btn-lg btn-primary d-none" value="Upload Image">
+                <button id="submit" id="submit" class="w-100 btn btn-lg btn-primary" type="submit">Upload
+                  </button>
+                </div>
+                <hr class="my-4">
+                <small class="text-muted">By clicking upload, you agree to the terms of use.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="container col-xxl-8 px-4 py-3">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                <img src="static/brain.svg" alt="" width="50" height="50">
+                AI-powered solution
+            </h1>
+            <p class="lead"> With state-of-the-art technology, Shoobg quickly and efficiently removes backgrounds from your photos, leaving only the subject in focus. Say goodbye to cluttered backgrounds. Try us today and see the difference AI makes!</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Learn more</button>
+            </div>
+          </div>
+          <div class="col-10 col-sm-8 col-lg-6 mx-auto">
+            <img src="static/demo.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="container col-xxl-8 px-4 py-3">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6 mx-auto">
+                <img src="static/tuto.gif" class="d-block mx-lg-auto img-fluid" alt="GIF explaining how to use" width="700" height="500" loading="lazy">
+            </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                <img src="static/howto.svg" alt="" width="50" height="50">
+                How to use ?
+            </h1>
+            <p class="lead">Shoobg makes it easy to remove backgrounds from your photos quickly and efficiently. Our user-friendly interface and state-of-the-art technology make background removal a seamless process!</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="static/brain.svg" width="24" height="24" class="rounded me-2" alt="...">
+      <strong class="me-auto">Tips</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      You can Control-V directly in the page!
+    </div>
+  </div>
 </div>
 
-</body>
-</html>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+{% endblock body %}
